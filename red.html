@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JuWili – Cake & More</title>
+  <meta name="description" content="JuWili – Personalisierte Torten, Pralinés, Pasteten, Cupcakes und vieles mehr. Watt, Regensdorf. Baking with love!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#231f20;
+      --rose:#efc3cb;
+      --rose2:#e5a9b4;
+      --roseDeep:#d86f8c;
+      --roseDark:#bb4f6f;
+      --white:#fff;
+    }
+    body {
+      margin:0;
+      font-family:Inter,sans-serif;
+      color:var(--ink);
+      background:linear-gradient(90deg,#fde7eb,var(--rose) 50%, var(--rose2));
+    }
+    a { color:inherit; text-decoration:none }
+    .container { width:min(1100px,92%); margin:0 auto }
+    header {
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,.85);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #e9d2d8;
+      z-index:10
+    }
+    .nav {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.9rem 0
+    }
+    nav a {
+      margin-left:1rem;
+      font-weight:600;
+      position:relative
+    }
+    nav a:after {
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-4px;
+      height:2px;
+      background:currentColor;
+      opacity:0;
+      transform:scaleX(.3);
+      transition:.25s
+    }
+    nav a:hover:after { opacity:.6; transform:scaleX(1) }
+    .lang {
+      display:flex;
+      gap:.4rem;
+      align-items:center
+    }
+    .lang button {
+      border:1px solid #e0c4cb;
+      background:white;
+      padding:.35rem .7rem;
+      border-radius:999px;
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .2s ease, background .2s ease
+    }
+    .lang button:hover {
+      transform:translateY(-1px);
+      box-shadow:0 6px 14px rgba(0,0,0,.08)
+    }
+    .lang button[aria-pressed="true"] {
+      background:var(--ink);
+      color:#fff;
+      border-color:transparent
+    }
+    .hero { padding:4rem 0; text-align:center }
+    .hero img {
+      max-width:320px;
+      height:auto;
+      filter:drop-shadow(0 8px 24px rgba(0,0,0,.12))
+    }
+    .tagline { font-size:22px; margin-top:.5rem; opacity:.9 }
+    .btn-primary {
+      display:inline-block;
+      margin-top:1rem;
+      padding:.9rem 1.15rem;
+      border-radius:999px;
+      font-weight:800;
+      letter-spacing:.2px;
+      box-shadow:0 10px 20px rgba(0,0,0,.08);
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+      background:linear-gradient(135deg,var(--rose2),var(--roseDeep));
+      color:#fff
+    }
+    .btn-primary:hover {
+      transform:translateY(-2px);
+      box-shadow:0 14px 26px rgba(0,0,0,.12)
+    }
+    .btn-primary:active { transform:translateY(0); filter:saturate(.96) }
+    .section { padding:3rem 0; text-align:center }
+    footer {
+      padding:2.5rem 0;
+      border-top:1px solid #e9d2d8;
+      background:rgba(255,255,255,.6);
+      text-align:center
+    }
+    /* Galerie-Wrapper */
+    .gallery-wrapper {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      position:relative;
+    }
+    .gallery-scroll {
+      display:flex;
+      justify-content:center;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      gap:12px;
+      padding:10px;
+      max-width:90%;
+      scrollbar-width: none;
+    }
+    .gallery-scroll::-webkit-scrollbar {
+       display: none;
+    }
+    .gallery-item {
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+      background:#fff;
+      flex:0 0 auto;
+    }
+    .gallery-item img {
+      width:220px;
+      height:220px;
+      object-fit:cover;
+      display:block;
+      transition:transform .3s ease;
+    }
+    .gallery-item:hover img { transform:scale(1.03) }
+    .gallery-item figcaption {
+      position:absolute;
+      left:0; right:0; bottom:0;
+      padding:.5rem .75rem;
+      background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
+      color:#fff;
+      font-weight:600;
+    }
+    .gal-btn {
+      background:rgba(0,0,0,0.15);
+      border:none;
+      color:#fff;
+      font-size:28px;
+      width:48px;
+      height:48px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:background .2s ease;
+    }
+    .gal-btn:hover { background:rgba(0,0,0,0.3) }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <img src="Logo.png" alt="JuWili Logo" style="height:50px">
+      <nav>
+        <a href="#angebote" data-i18n="nav_angebote">Angebote</a>
+        <a href="#kontakt" data-i18n="nav_kontakt">Kontakt</a>
+        <a href="https://www.instagram.com/juwili.cake" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <div class="lang" aria-label="Sprachauswahl">
+        <button id="lang-de" aria-pressed="true">DE</button>
+        <button id="lang-pt" aria-pressed="false">PT-BR</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <img src="Logo.png" alt="JuWili Logo gross">
+      <p class="tagline" data-i18n="tagline">Baking with love!</p>
+      <div style="margin-top:.25rem;opacity:.9"><span>🇧🇷 Natal · 🇨🇭 Watt, Regensdorf</span></div>
+      <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
+        <a class="btn-primary" href="#kontakt" data-i18n="cta">Jetzt anfragen</a>
+        <a class="btn-primary" href="https://wa.me/41764283226" target="_blank" rel="noopener" data-i18n="cta_whatsapp">WhatsApp</a>
+      </div>
+    </section>
+    <section id="angebote" class="section">
+      <h2 data-i18n="section_sweets">Personalisierte Süssigkeiten</h2>
+      <p data-i18n="lead_pt">Bolos Personalizados, Docinhos, Tortas, Cupcakes e etc.</p>
+      <p data-i18n="lead_de">Personalisierte Torten, Pralinés, Pasteten, Cupcakes und vieles mehr.</p>
+    </section>
+
+    <section id="galerie" class="section">
+      <h2 data-i18n="gallery_h2">Galerie</h2>
+      <div class="gallery-wrapper">
+        <button class="gal-btn" id="gal-prev">‹</button>
+        <div class="gallery-scroll" id="gal-scroll"></div>
+        <button class="gal-btn" id="gal-next">›</button>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section">
+      <h2 data-i18n="kontakt_h2">Kontakt</h2>
+      <p data-i18n="kontakt_addr">Julyana Wili – Watt, Regensdorf</p>
+      <p>📞 <a href="tel:+41764283226">+41 76 428 32 26</a></p>
+      <p>✉️ <a href="mailto:julyana@wili.ch">julyana@wili.ch</a></p>
+      <p>📷 <a href="https://www.instagram.com/juwili.cake" target="_blank">@juwili.cake</a></p>
+      <p>💬 <a href="https://wa.me/41764283226" target="_blank" rel="noopener">WhatsApp Chat</a></p>
+    </section>
+  </main>
+  <footer>
+    <p>© <span id="y"></span> JuWili – Cake & More · Watt, Regensdorf</p>
+  </footer>
+
+  <script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const dict = {
+    de: {
+      nav_angebote: 'Angebote',
+      nav_kontakt: 'Kontakt',
+      tagline: 'Baking with love!',
+      cta: 'Jetzt anfragen',
+      cta_whatsapp: 'WhatsApp',
+      section_sweets: 'Personalisierte Süssigkeiten',
+      lead_pt: 'Bolos Personalizados, Docinhos, Tortas, Cupcakes e etc.',
+      lead_de: 'Personalisierte Torten, Pralinés, Pasteten, Cupcakes und vieles mehr.',
+      gallery_h2: 'Galerie',
+      kontakt_h2: 'Kontakt',
+      kontakt_addr: 'Julyana Wili – Watt, Regensdorf'
+    },
+    pt: {
+      nav_angebote: 'Cardápio',
+      nav_kontakt: 'Contato',
+      tagline: 'Baking with love!',
+      cta: 'Pedir agora',
+      cta_whatsapp: 'WhatsApp',
+      section_sweets: 'Doces Personalizados',
+      lead_pt: 'Bolos personalizados, docinhos, tortas, cupcakes e etc.',
+      lead_de: 'Tortas personalizadas, pralinés, pastéis, cupcakes e muito mais.',
+      gallery_h2: 'Galeria',
+      kontakt_h2: 'Contato',
+      kontakt_addr: 'Julyana Wili – Watt, Regensdorf'
+    }
+  };
+
+  function applyLang(code) {
+    const d = dict[code] || dict.de;
+    for (const [k, v] of Object.entries(d)) {
+      document.querySelectorAll('[data-i18n="' + k + '"]').forEach(el => {
+        el.textContent = v;
+      });
+    }
+    document.documentElement.lang = code === 'pt' ? 'pt-BR' : 'de';
+    document.getElementById('lang-de').setAttribute('aria-pressed', code === 'de');
+    document.getElementById('lang-pt').setAttribute('aria-pressed', code === 'pt');
+    localStorage.setItem('juwili_lang', code);
+    updateCaptions();
+  }
+
+  const saved = localStorage.getItem('juwili_lang');
+  applyLang(saved === 'pt' ? 'pt' : 'de');
+
+  const IMAGES = [
+    { src: 'bilder/referenz01.jpg', de: 'Schokoladen-Traum', pt: 'Sonho de Chocolate' },
+    { src: 'bilder/referenz02.jpg', de: 'Beerenglück', pt: 'Alegria de Frutas Vermelhas' },
+    { src: 'bilder/referenz03.jpg', de: 'Vanillezauber', pt: 'Magia de Baunilha' },
+    { src: 'bilder/referenz04.jpg', de: 'Tropenfrische', pt: 'Frescura Tropical' },
+    { src: 'bilder/referenz05.jpg', de: 'Karamellharmonie', pt: 'Harmonia de Caramelo' },
+    { src: 'bilder/referenz06.jpg', de: 'Erdbeerliebe', pt: 'Amor de Morango' },
+    { src: 'bilder/referenz07.jpg', de: 'Nussknacker', pt: 'Quebra-Nozes' },
+    { src: 'bilder/referenz08.jpg', de: 'Zitronenfreude', pt: 'Alegria de Limão' },
+    { src: 'bilder/referenz09.jpg', de: 'Blütenzauber', pt: 'Magia das Flores' },
+    { src: 'bilder/referenz10.jpg', de: 'Herzmoment', pt: 'Momento do Coração' },
+    { src: 'bilder/referenz11.jpg', de: 'Schwarz & Weiss', pt: 'Preto e Branco' },
+    { src: 'bilder/referenz12.jpg', de: 'Honigtraum', pt: 'Sonho de Mel' },
+    { src: 'bilder/referenz13.jpg', de: 'Kokosglück', pt: 'Felicidade de Coco' },
+    { src: 'bilder/referenz14.jpg', de: 'Marzipan-Magie', pt: 'Magia de Marzipã' },
+    { src: 'bilder/referenz15.jpg', de: 'Festtagsfreude', pt: 'Alegria Festiva' }
+  ];
+
+  const scrollBox = document.getElementById('gal-scroll');
+
+  function renderGallery() {
+    scrollBox.innerHTML = '';
+    IMAGES.forEach((it, idx) => {
+      const fig = document.createElement('figure');
+      fig.className = 'gallery-item';
+      fig.innerHTML = `<img src="${it.src}" alt="${it.de}"><figcaption>${document.documentElement.lang === 'pt-BR' ? it.pt : it.de}</figcaption>`;
+      scrollBox.appendChild(fig);
+    });
+    scrollBox.scrollTo({ left: 0 }); // Startet ganz links
+  }
+
+  function updateCaptions() {
+    document.querySelectorAll('.gallery-item figcaption').forEach((cap, idx) => {
+      cap.textContent = document.documentElement.lang === 'pt-BR' ? IMAGES[idx].pt : IMAGES[idx].de;
+    });
+  }
+
+  document.getElementById('lang-de').addEventListener('click', () => applyLang('de'));
+  document.getElementById('lang-pt').addEventListener('click', () => applyLang('pt'));
+
+  document.getElementById('gal-prev').onclick = () => { scrollBox.scrollBy({ left: -240, behavior: 'smooth' }); };
+  document.getElementById('gal-next').onclick = () => { scrollBox.scrollBy({ left: 240, behavior: 'smooth' }); };
+
+  renderGallery();
+</script>
+
+</body>
+</html>
