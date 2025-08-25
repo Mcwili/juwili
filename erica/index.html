@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Erica – Treinador de Alemao</title>
+  <meta name="theme-color" content="#0a0d18" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="title">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Erica Treinador de Alemao</h1>
+          <div class="subtitle">Aprenda alemao a partir do portugues do Brasil. Tres modos e dois jogos. 100 palavras basicas.</div>
+        </div>
+      </div>
+      <nav aria-label="Navegacao de modos">
+        <button class="tab-btn active" data-tab="choice">Modo 1 Escolha</button>
+        <button class="tab-btn" data-tab="typing">Modo 2 Digitar</button>
+        <button class="tab-btn" data-tab="games">Modo 3 Jogos</button>
+        <button class="tab-btn" data-tab="wortliste">Lista de Palavras</button>
+        <button class="tab-btn" data-tab="einstellungen">Configuracoes</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">
+          <span class="pill">Tarefa atual</span>
+          <div class="audio-bar">
+            <label for="voice-de">Voz DE</label>
+            <select id="voice-de" class="select"></select>
+            <label for="rate">Velocidade</label>
+            <input id="rate" type="range" min="0.6" max="1.4" step="0.05" value="1">
+            <label for="auto-say">Auto falar</label>
+            <input id="auto-say" type="checkbox">
+          </div>
+          <div class="score" id="scorebar"></div>
+        </div>
+        <div class="card-c" id="panel"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><span class="pill">Controle</span><div class="controls">
+          <button class="btn" id="btn-skip">Proxima</button>
+          <button class="btn" id="btn-reset">Reiniciar</button>
+        </div></div>
+        <div class="card-c">
+          <div class="small-hint">Toque no icone de audio para ouvir a pronuncia em alemao. Em Configuracoes voce ajusta opcoes e o conjunto de palavras.</div>
+          <div style="height:12px"></div>
+          <div id="settings-panel" class="hidden"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Erica ajuda de forma simples e clara. Bons estudos.
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
